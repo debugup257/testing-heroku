@@ -13,7 +13,7 @@ c = conn.cursor()
 
 @app.route('/', methods=["GET","POST"])
 def index():
-   if request.method=="POST":
+    if request.method=="POST":
         username = request.form.get("username")
         password = request.form.get("password")
         
@@ -40,7 +40,7 @@ def index():
                 c.execute("""SELECT user_type FROM users WHERE username = %(value)s; """,{"value":username})
                 user_type = (c.fetchall())
                 if user_type[0][0]=="admin":
-                    return "success"
+                    return redirect (url_for("admin_user"))
 
     return render_template("index.html")
 
