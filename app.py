@@ -13,7 +13,7 @@ c = conn.cursor()
 
 @app.route('/', methods=["GET","POST"])
 def index():
-    if request.method=="GET":
+    if request.method=="POST":
         username = request.form.get("username")
         password = request.form.get("password")
         
