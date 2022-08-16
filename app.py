@@ -11,7 +11,7 @@ conn = psycopg2.connect(
 )
 c = conn.cursor()
 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 def index():
    if request.method=="POST":
         username = request.form.get("username")
