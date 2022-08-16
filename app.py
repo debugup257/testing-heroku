@@ -13,34 +13,34 @@ c = conn.cursor()
 
 @app.route('/', methods=["GET","POST"])
 def index():
-    if request.method=="POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+    if request.method=="GET":
+#         username = request.form.get("username")
+#         password = request.form.get("password")
         
-        c.execute("SELECT username FROM users;")
-        usernames = (c.fetchall())
-        usernames_list=[]
+#         c.execute("SELECT username FROM users;")
+#         usernames = (c.fetchall())
+#         usernames_list=[]
 
-        for i in usernames:
-            usernames_list.append(i[0])
-        conn.commit()
+#         for i in usernames:
+#             usernames_list.append(i[0])
+#         conn.commit()
         
-        c.execute("SELECT password FROM users;")
-        passwords = (c.fetchall())
-        passwords_list=[]
+#         c.execute("SELECT password FROM users;")
+#         passwords = (c.fetchall())
+#         passwords_list=[]
 
-        for i in passwords:
-            passwords_list.append(i[0])
-        conn.commit()
+#         for i in passwords:
+#             passwords_list.append(i[0])
+#         conn.commit()
 
-        if username in usernames_list:
-            if password in passwords_list:
-                session.permanent=False
-                session["user"]=username
-                c.execute("""SELECT user_type FROM users WHERE username = %(value)s; """,{"value":username})
-                user_type = (c.fetchall())
-                if user_type[0][0]=="admin":
-                    return "success"
+#         if username in usernames_list:
+#             if password in passwords_list:
+#                 session.permanent=False
+#                 session["user"]=username
+#                 c.execute("""SELECT user_type FROM users WHERE username = %(value)s; """,{"value":username})
+#                 user_type = (c.fetchall())
+#                 if user_type[0][0]=="admin":
+#                     return "success"
 
     return render_template("index.html")
 
