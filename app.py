@@ -40,7 +40,7 @@ def index():
                 c.execute("""SELECT user_type FROM users WHERE username = %(value)s; """,{"value":username})
                 user_type = (c.fetchall())
                 if user_type[0][0]=="admin":
-                    return redirect (url_for("admin_user"))
+                    return "success"
 
     return render_template("index.html")
 
