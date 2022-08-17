@@ -5,6 +5,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.secret_key="hello"
 
 conn = psycopg2.connect(
    database="d67fsm4svq5gp3", user='cthlqzrfduldux', password='284d42f2d7277cf2318c7053bb11f6665c3ba385f1abc9ca3668af049a5eb06e', host='ec2-44-195-100-240.compute-1.amazonaws.com', port= '5432'
@@ -39,8 +40,8 @@ def index():
                 session["user"]=username
                 c.execute("""SELECT user_type FROM users WHERE username = %(value)s; """,{"value":username})
                 user_type = (c.fetchall())
-                if user_type[0][0]=="admin":
-                    return "success"
+                # if user_type[0][0]=="admin":
+                return "success"
 
     return render_template("index.html")
 
